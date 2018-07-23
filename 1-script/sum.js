@@ -1,4 +1,4 @@
 
-function sum(arr){
-    return reduce(arr, add);
+function sum(a, b){
+    return a + b;
 }

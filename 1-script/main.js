@@ -1,4 +1,3 @@
-// 1-main.js 
-var values = [ 1, 2, 4, 5, 6, 7, 8, 9 ];
-var answer = sum(values)
+// main.js 
+var answer = sum(1, 2)
 document.getElementById("answer").innerHTML = answer;
