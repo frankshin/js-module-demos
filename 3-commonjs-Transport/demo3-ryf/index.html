@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直接可以在浏览器跑起来的commonjs</title>
+    <script src="./lib.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    // require.register("moduleId", function(module, exports, require){
+    //   // Module code goes here
+    // });
+    // var result = require("moduleId");
+
+    require.register("./foo.js", function(module, exports, require){
+        // module.exports = function(x) {
+        //     console.log(x);
+        // };
+    });
+
+    var foo = require("./foo.js");
+    foo("Hi33");
+</script>
+</html>

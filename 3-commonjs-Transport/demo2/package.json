@@ -1,0 +1,13 @@
+{
+    "name": "commonjs1",
+    "version": "1.0.0",
+    "description": "# 该实现方式是在commonjs规范的基础上通过工具强行转换实现在浏览器端的使用的 --- “保皇派”",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "browserify app/main.js > bundle.js"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+  
