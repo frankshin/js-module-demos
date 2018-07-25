@@ -36,89 +36,88 @@ var app = {};
 
 > 概况：
 
-原理&demo：
-
 该规范下的轮子：RequireJS
+
+轮子原理&demo：
 
 ### 3-commonjs-Transport
 
-> 概况：
+> 概况：该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
-原理&demo：
+该规范下的轮子：browserify
 
-该规范下的轮子：RequireJS
+轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
 ### 3-commonjs-Wrappings
 
 > 概况：
 
-原理&demo：
+该规范下的轮子：
 
-该规范下的轮子：RequireJS
+轮子原理&demo：
 
 ### 4-CMD
 
 > 概况：
 
-原理&demo：
+该规范下的轮子：
 
-该规范下的轮子：RequireJS
+轮子原理&demo：
 
 ### 5-ES6
 
 > 概况：
 
-原理&demo：
+该规范下的轮子：
 
-该规范下的轮子：RequireJS
+轮子原理&demo：
 
 ### UMD(Universal Module Definition) - 通用模块定义
 
 > 概况：
 
-原理&demo：
-
 该规范下的轮子：
+
+轮子原理&demo：
 
 ### Webpack
 
 > 概况：Webpack 可以处理 CommonJS 、 AMD 和 ES6 模块
 
-原理&demo：
-
 该规范下的轮子：
 
+轮子原理&demo：
 
 ### Rollup (2015 年 5 月)
 
 > 概况：
 
-原理&demo：
-
 该规范下的轮子：
+
+轮子原理&demo：
 
 ### SystemJS
 
 > 概况：
 
-原理&demo：
-
 该规范下的轮子：
+
+轮子原理&demo：
 
 ### JSPM
 
 > 概况：
 
-原理&demo：
-
 该规范下的轮子：
+
+轮子原理&demo：
 
 ## notes
 
 - 排序没有严格的先后顺序，只是发展历程的大概呈现
 
 ## 参考文章 & 感谢
-2
+
 js模块化历程：https://www.cnblogs.com/lvdabao/p/js-modules-develop.html
 浏览器加载 CommonJS 模块的原理与实现：http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html
 JavaScript 模块简史：http://www.css88.com/archives/7628
