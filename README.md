@@ -45,13 +45,13 @@ var app = {};
 
 > 概况：该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
-该规范下的轮子：browserify
+该规范下的轮子：Browserify
 
 轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
 ### 3-commonjs-Wrappings
 
-> 概况：
+> 概况：该规范同时包含了transport和AMD规范的相关特性，该规范指出一个模块该如何“包装”
 
 该规范下的轮子：
 
