@@ -82,9 +82,9 @@ module.declare(function(require){
 
 缺点：
 
-### 4-CMD
+### 4-CMD（Common Module Definition）
 
-> 概况：
+> 概况：CMD规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
 该规范下的轮子：seajs（备注：不完全遵循该规范）
 
