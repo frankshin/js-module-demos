@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>seajs demo</title>
+    <style>
+        #b{
+            border: 1px solid red;
+            padding: 4px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="b">点击我</div>
+    <script src="https://cdn.bootcss.com/seajs/3.0.2/sea.js"></script>
+    <script>
+        // seajs 的简单配置
+        seajs.config({
+            base: "/",
+            alias: {
+                // "jquery": "https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"
+                "jquery": 'jquery-3.3.1.min.js'
+            }
+        })
+        // 加载入口模块
+        seajs.use("main")
+    </script>
+</body>
+</html>
