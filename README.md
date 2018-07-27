@@ -16,21 +16,21 @@ var app = {};
 `
 
 // sum.js
-`
+```javascript {cmd="node"}
 (function(){
     app.sum = function(a, b){
         return a + b;
     }  
 })();
-`
+```
 
 // main.js
-`
+```javascript {cmd="node"}
 (function(app){
     var answer = app.sum(values)
     document.getElementById("answer").innerHTML = answer;
 })(app);
-`
+```
 
 ### 3-commonjs-AMD
 
@@ -53,7 +53,7 @@ var app = {};
 
 缺点：
 
-### 3-commonjs-Wrappings
+### 3-commonjs-Wrappings/Commonjs/Modules/2.0
 
 > 概况：这一波人有点像“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（http://wiki.commonjs.org/wiki/Modules/Wrappings）规范，此规范指出了一个模块应该如何“包装”，包含以下内容：
 1. 全局有一个module变量，用来定义模块
@@ -89,6 +89,49 @@ module.declare(function(require){
 该规范下的轮子：seajs（备注：不完全遵循该规范）
 
 轮子原理&demo：seajs全面拥抱Modules/Wrappings规范，不用requirejs那样回调的方式来编写模块。而它也不是完全按照Modules/Wrappings规范，seajs并没有使用declare来定义模块，而是使用和requirejs一样的define，或许作者本人更喜欢这个名字吧。（然而这或多或少又会给人们造成理解上的混淆）
+
+```javascript {cmd="node"}
+//a.js
+define(function(require, exports, module){
+    console.log('a.js执行');
+    return {
+        hello: function(){
+            console.log('hello, a.js');
+        }
+    }
+});
+//b.js
+define(function(require, exports, module){
+    console.log('b.js执行');
+    return {
+        hello: function(){
+            console.log('hello, b.js');
+        }
+    }
+});
+//main.js
+define(function(require, exports, module){
+    console.log('main.js执行');
+    var a = require('a');
+    a.hello();
+    $('#b').click(function(){
+        var b = require('b');
+        b.hello();
+    });
+});
+
+// 使用说明：
+// 所有模块都通过 define 来定义
+define(function(require, exports, module) {
+    // 通过 require 引入依赖
+    var $ = require('jquery');
+    var Spinning = require('./spinning');
+    // 通过 exports 对外提供接口
+    exports.doSomething = ...
+    // 或者通过 module.exports 提供整个接口
+    module.exports = ...
+});
+```
 
 优点：
 
