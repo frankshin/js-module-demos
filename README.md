@@ -37,6 +37,7 @@ var app = {};
 > 概况：该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
 
 该规范下的轮子：RequireJS
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
 
 轮子原理&demo：
 这里名叫requirejs的工具，并没有支持commonjs规范中的require语法
@@ -46,6 +47,7 @@ var app = {};
 > 概况：该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
 该规范下的轮子：Browserify
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png)
 
 轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
@@ -87,6 +89,7 @@ module.declare(function(require){
 > 概况：CMD规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
 该规范下的轮子：seajs（备注：不完全遵循该规范）
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo.png)
 
 轮子原理&demo：seajs全面拥抱Modules/Wrappings规范，不用requirejs那样回调的方式来编写模块。而它也不是完全按照Modules/Wrappings规范，seajs并没有使用declare来定义模块，而是使用和requirejs一样的define，或许作者本人更喜欢这个名字吧。（然而这或多或少又会给人们造成理解上的混淆）
 
