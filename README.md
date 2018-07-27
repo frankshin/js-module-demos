@@ -5,18 +5,19 @@
 
 > 概况：这种用法所处的阶段可以说是前端的草莽时期，完全没有模块的概念，直接使用内嵌脚本,Script 标签引入 JavaScript 文件
 
-## 2-IIFE
+## 2-模块对象和IIFE(Immediately-invoked function expression 立即调用的函数表达式)
 
 > 概况：为了减少上述方式对全局作用域的污染
 
 原理&demo：该规范下，只在全局定义一个变量，所有项目代码和逻辑都包含在这个全局对象中，设计的出发点在于减少对全局作用域的污染。
-// app.js
-`
-var app = {};
-`
 
-// sum.js
 ```javascript {cmd="node"}
+// app.js
+var app = {};
+```
+
+```javascript {cmd="node"}
+// sum.js
 (function(){
     app.sum = function(a, b){
         return a + b;
@@ -24,8 +25,8 @@ var app = {};
 })();
 ```
 
-// main.js
 ```javascript {cmd="node"}
+// main.js
 (function(app){
     var answer = app.sum(values)
     document.getElementById("answer").innerHTML = answer;
@@ -34,7 +35,7 @@ var app = {};
 
 ## 3-commonjs-AMD
 
-> 概况：该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
+> 概况：该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
 
 该规范下的轮子：RequireJS
 
@@ -45,7 +46,7 @@ var app = {};
 
 ## 3-commonjs-Transport
 
-> 概况：该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
+> 概况：该规范即从commonjs中分离出来的派系：Modules/1.x派，该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
 该规范下的轮子：Browserify
 
@@ -57,9 +58,9 @@ var app = {};
 
 缺点：
 
-## 3-commonjs-Wrappings/Commonjs/Modules/2.0
+## 3-commonjs-Wrappings
 
-> 概况：这一波人有点像“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（http://wiki.commonjs.org/wiki/Modules/Wrappings）规范，此规范指出了一个模块应该如何“包装”，包含以下内容：
+> 概况：该规范即从commonjs中分离出来的派系：Modules/2.0派，改规范的支持者类似“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（http://wiki.commonjs.org/wiki/Modules/Wrappings）规范，此规范指出了一个模块应该如何“包装”，包含以下内容：
 1. 全局有一个module变量，用来定义模块
 2. 通过module.declare方法来定义一个模块
 3. module.declare方法只接收一个参数，那就是模块的factory，次factory可以是函数也可以是对象，如果是对象，那么模块输出就是此对象。
@@ -153,7 +154,7 @@ define(function(require, exports, module) {
 
 ## UMD(Universal Module Definition) - 通用模块定义
 
-> 概况：
+> 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD
 
 该规范下的轮子：
 
