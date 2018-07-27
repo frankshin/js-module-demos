@@ -1,11 +1,11 @@
 
-## 目录
+# 模块规范汇总
 
-### 1-script
+## 1-script
 
 > 概况：这种用法所处的阶段可以说是前端的草莽时期，完全没有模块的概念，直接使用内嵌脚本,Script 标签引入 JavaScript 文件
 
-### 2-IIFE
+## 2-IIFE
 
 > 概况：为了减少上述方式对全局作用域的污染
 
@@ -32,7 +32,7 @@ var app = {};
 })(app);
 ```
 
-### 3-commonjs-AMD
+## 3-commonjs-AMD
 
 > 概况：该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
 
@@ -41,7 +41,7 @@ var app = {};
 轮子原理&demo：
 这里名叫requirejs的工具，并没有支持commonjs规范中的require语法
 
-### 3-commonjs-Transport
+## 3-commonjs-Transport
 
 > 概况：该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
@@ -53,7 +53,7 @@ var app = {};
 
 缺点：
 
-### 3-commonjs-Wrappings/Commonjs/Modules/2.0
+## 3-commonjs-Wrappings/Commonjs/Modules/2.0
 
 > 概况：这一波人有点像“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（http://wiki.commonjs.org/wiki/Modules/Wrappings）规范，此规范指出了一个模块应该如何“包装”，包含以下内容：
 1. 全局有一个module变量，用来定义模块
@@ -74,7 +74,7 @@ module.declare(function(require){
 });
 ```
 
-该规范下的轮子：
+该规范下的轮子：目前貌似貌似没找到完全遵循该规范的轮子
 
 轮子原理&demo：
 
@@ -82,7 +82,7 @@ module.declare(function(require){
 
 缺点：
 
-### 4-CMD（Common Module Definition）
+## 4-CMD（Common Module Definition）
 
 > 概况：CMD规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
@@ -137,7 +137,7 @@ define(function(require, exports, module) {
 
 缺点：
 
-### 5-ES6
+## 5-ES6
 
 > 概况：
 
@@ -145,7 +145,7 @@ define(function(require, exports, module) {
 
 轮子原理&demo：
 
-### UMD(Universal Module Definition) - 通用模块定义
+## UMD(Universal Module Definition) - 通用模块定义
 
 > 概况：
 
@@ -153,7 +153,7 @@ define(function(require, exports, module) {
 
 轮子原理&demo：
 
-### Webpack
+## Webpack
 
 > 概况：Webpack 可以处理 CommonJS 、 AMD 和 ES6 模块
 
@@ -161,7 +161,7 @@ define(function(require, exports, module) {
 
 轮子原理&demo：
 
-### Rollup (2015 年 5 月)
+## Rollup (2015 年 5 月)
 
 > 概况：
 
@@ -169,7 +169,7 @@ define(function(require, exports, module) {
 
 轮子原理&demo：
 
-### SystemJS
+## SystemJS
 
 > 概况：
 
@@ -177,7 +177,7 @@ define(function(require, exports, module) {
 
 轮子原理&demo：
 
-### JSPM
+## JSPM
 
 > 概况：
 
