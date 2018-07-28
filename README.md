@@ -146,15 +146,16 @@ define(function(require, exports, module) {
 
 ## 5-ES6
 
-> 概况：
+> 概况：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块
 
-该规范下的轮子：
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png)
 
-轮子原理&demo：
+demo：
+
 
 ## UMD(Universal Module Definition) - 通用模块定义
 
-> 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD
+> 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
 
 该规范下的轮子：
 
