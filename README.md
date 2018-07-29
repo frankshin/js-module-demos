@@ -167,12 +167,28 @@ es6的静态加载导致没法引用ES6模块本身，因为它不是对象。
 
 es6模块与commonjs模块比较：
 
-* CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
+* CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
 
-* CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
+* CommonJS模块是运行时加载，ES6模块是编译时输出接口。(因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。)
 
 demo：
 
+ES6转码器：
+
+* babel
+
+* es6-module-transpiler
+
+```javascript {cmd="node"}
+// 安装解码器
+$ npm install -g es6-module-transpiler
+// 使用compile-modules命令将es6文件解码
+$ compile-modules convert bundle.js main.js
+// -o参数可以指定转码后的文件名(包括指定路径)
+$ compile-modules convert -o dist/bundle.js main.js
+```
+
+* SystemJS
 
 ## UMD(Universal Module Definition) - 通用模块定义
 
