@@ -175,9 +175,9 @@ demo：
 
 ES6转码器：
 
-* babel
+### babel
 
-* es6-module-transpiler
+### es6-module-transpiler
 
 > ES6 module transpiler是square公司开源的一个转码器，可以将ES6模块转为CommonJS模块或AMD模块的写法，从而在浏览器中使用.
 
@@ -190,9 +190,50 @@ $ compile-modules convert bundle.js main.js
 $ compile-modules convert -o dist/bundle.js main.js
 ```
 
-* SystemJS
+### SystemJS
 
 > SystemJS是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
+
+### Rollup (2015 年 5 月)
+
+> 概况：Rollup是另一个JavaScript ES6模块打包器。与Browserify和Webpak不同，rollup只包含在项目中用到的代码。如果有大模块，带有很多函数，但是你只是用到少数几个，rollup只会将需要的函数包含到打包文件中，从而显著减少打包文件大小。
+
+rollup在angular2中的应用：
+
+轮子原理&demo：
+
+```javascript {cmd="node"}
+$ npm install -g rollup
+
+// sum.js
+let add = (a,b) => a + b;
+let sub = (a,b) => a - b;
+export { add, sub };
+
+// main.js
+import sum from "./sum";
+var answer = sum(1, 3);
+document.getElementById("answer").innerHTML = answer;
+
+// 执行打包命令
+- For browsers:
+// compile to a <script> containing a self-executing function ('iife')
+$ rollup main.js --file bundle.js --format iife
+
+- For Node.js:
+// compile to a CommonJS module ('cjs')
+$ rollup main.js --file bundle.js --format cjs
+
+- For both browsers and Node.js:
+// UMD format requires a bundle name
+$ rollup main.js --file bundle.js --format umd --name "myBundle"
+
+// 备注：1、xx: output format: amd、cjs、system、esm、iife、umd
+//      2、在生成的bundle.js中会发现，引入但是未使用的sub方法并未被打包进来
+
+```
+
+# 其他
 
 ## UMD(Universal Module Definition) - 通用模块定义
 
@@ -210,14 +251,6 @@ systemjs在angular2中的应用：
 
 轮子原理&demo：
 
-## Rollup (2015 年 5 月)
-
-> 概况：
-
-rollup在angular2中的应用：
-
-轮子原理&demo：
-
 ## JSPM
 
 > 概况：
@@ -228,7 +261,7 @@ rollup在angular2中的应用：
 
 ## notes
 
-- 排序没有严格的先后顺序，只是发展历程的大概呈现
+> 排序没有严格的先后顺序，只是发展历程的大概呈现
 
 ## 参考文章 & 感谢
 
