@@ -196,7 +196,9 @@ $ compile-modules convert -o dist/bundle.js main.js
 
 ### Rollup (2015 年 5 月)
 
-> 概况：Rollup是另一个JavaScript ES6模块打包器。与Browserify和Webpak不同，rollup只包含在项目中用到的代码。如果有大模块，带有很多函数，但是你只是用到少数几个，rollup只会将需要的函数包含到打包文件中，从而显著减少打包文件大小。
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png)
+
+> 概况：[Rollup](http://www.rollupjs.com/)是另一个JavaScript ES6模块打包器。与Browserify和Webpak不同，rollup只包含在项目中用到的代码。如果有大模块，带有很多函数，但是你只是用到少数几个，rollup只会将需要的函数包含到打包文件中，从而显著减少打包文件大小。
 
 rollup在angular2中的应用：
 
@@ -252,6 +254,8 @@ systemjs在angular2中的应用：
 轮子原理&demo：
 
 ## JSPM
+
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/jspm.png)
 
 > 概况： [JSPM](https://jspm.org/docs/0.16/getting-started.html)是 JavaScript 开发工具的瑞士军刀，它是既是包管理器，又是模块加载器，又是模块打包器。
 
@@ -310,6 +314,9 @@ jspm bundle-sfx lib/main
 ## 参考文章 & 感谢
 
 js模块化历程：https://www.cnblogs.com/lvdabao/p/js-modules-develop.html
+
 浏览器加载 CommonJS 模块的原理与实现：http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html
+
 JavaScript 模块简史：http://www.css88.com/archives/7628
+
 javascript模块化发展历程：https://juejin.im/post/5b42adf9e51d45192344303f
