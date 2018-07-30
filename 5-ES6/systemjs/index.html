@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>systemjs</title>
+    <script src="https://cdn.bootcss.com/systemjs/0.21.3/system.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    // System.config({
+    //     transplier: 'babel',
+    //     baseURL: '/node_modules'
+    // });
+    SystemJS.config({
+        baseURL: '/',
+        map: {
+            'plugin-babel': 'node_modules/systemjs-plugin-babel/plugin-babel.js',
+            'systemjs-babel-build': 'node_modules/systemjs-plugin-babel/systemjs-babel-browser.js'
+        },
+        transpiler: 'plugin-babel'
+    });
+    System.import('main.js');
+</script>
+</html>

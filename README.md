@@ -179,6 +179,8 @@ ES6转码器：
 
 * es6-module-transpiler
 
+> ES6 module transpiler是square公司开源的一个转码器，可以将ES6模块转为CommonJS模块或AMD模块的写法，从而在浏览器中使用.
+
 ```javascript {cmd="node"}
 // 安装解码器
 $ npm install -g es6-module-transpiler
@@ -190,13 +192,15 @@ $ compile-modules convert -o dist/bundle.js main.js
 
 * SystemJS
 
+> SystemJS是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
+
 ## UMD(Universal Module Definition) - 通用模块定义
 
 > 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
 
-该规范下的轮子：
+demo：
 
-轮子原理&demo：
+systemjs在angular2中的应用：
 
 ## Webpack
 
@@ -210,15 +214,7 @@ $ compile-modules convert -o dist/bundle.js main.js
 
 > 概况：
 
-该规范下的轮子：
-
-轮子原理&demo：
-
-## SystemJS
-
-> 概况：
-
-该规范下的轮子：
+rollup在angular2中的应用：
 
 轮子原理&demo：
 
