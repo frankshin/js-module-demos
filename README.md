@@ -233,7 +233,7 @@ $ rollup main.js --file bundle.js --format umd --name "myBundle"
 
 ```
 
-# 其他
+# 其他规范及轮子
 
 ## UMD(Universal Module Definition) - 通用模块定义
 
@@ -253,13 +253,57 @@ systemjs在angular2中的应用：
 
 ## JSPM
 
-> 概况：
+> 概况： [JSPM](https://jspm.org/docs/0.16/getting-started.html)是 JavaScript 开发工具的瑞士军刀，它是既是包管理器，又是模块加载器，又是模块打包器。
 
-该规范下的轮子：
+demo：
 
-轮子原理&demo：
+```javascript {cmd="node"}
+// 安装到全局
+npm install jspm -g
 
-## notes
+// 初始化项目
+cd my-project
+npm install jspm --save-dev
+jspm init
+
+// Install any packages from the jspm Registry, GitHub or npm:
+jspm install npm:lodash-node
+jspm install github:components/jquery
+jspm install jquery
+jspm install myname=npm:underscore
+
+// demo:
+// main.js
+import {bootstrap} from './bootstrap.js';
+bootstrap(2, 4);
+
+// sum.js
+export function bootstrap(a, b) {
+    let res = a + b;
+    console.log(res);
+}
+
+// html
+<!doctype html>
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>
+System.import('lib/main.js');
+</script>
+
+// Bundle for production
+// methd1: Refresh the browser, and see the entire app loaded from a single bundle file.
+jspm bundle lib/main --inject
+
+// method2:
+jspm bundle-sfx lib/main
+// Alternatively, use jspm bundle-sfx lib/main to create a bundle script that can be used on its own with a <script> tag independent of config.js and system.js.
+
+```
+
+# 结束语
+
+## 备注
 
 > 排序没有严格的先后顺序，只是发展历程的大概呈现
 

@@ -9,9 +9,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "systemjs-plugin-babel": "0.0.25"
   },
   "dependencies": {
-    "systemjs-plugin-babel": "0.0.25"
+    
   }
 }
