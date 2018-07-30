@@ -318,5 +318,3 @@ js模块化历程：https://www.cnblogs.com/lvdabao/p/js-modules-develop.html
 浏览器加载 CommonJS 模块的原理与实现：http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html
 
 JavaScript 模块简史：http://www.css88.com/archives/7628
-
-javascript模块化发展历程：https://juejin.im/post/5b42adf9e51d45192344303f
