@@ -5,9 +5,9 @@
 
 > 概况：这种用法所处的阶段可以说是前端的草莽时期，完全没有模块的概念，直接使用内嵌脚本,Script 标签引入 JavaScript 文件
 
-## 2.模块对象和IIFE(Immediately-invoked function expression 立即调用的函数表达式)
+## 2.模块对象和IIFE
 
-> 概况：为了减少上述方式对全局作用域的污染
+> 概况：模块对象和IIFE，即Immediately-invoked function expression立即调用的函数表达式，为了减少上述方式对全局作用域的污染
 
 原理&demo：该规范下，只在全局定义一个变量，所有项目代码和逻辑都包含在这个全局对象中，设计的出发点在于减少对全局作用域的污染。
 
@@ -37,7 +37,7 @@ var app = {};
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
 
-该规范下的轮子：RequireJS
+### 轮子：RequireJS
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
 
@@ -48,7 +48,9 @@ var app = {};
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/1.x派，该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
-该规范下的轮子：Browserify
+### 轮子：Browserify
+
+### 总结：保皇派
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png)
 
@@ -87,11 +89,13 @@ module.declare(function(require){
 
 缺点：
 
-## 5.CMD（Common Module Definition）
+## 5.CMD
 
-> 概况：CMD规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
+> 概况：CMD(Common Module Definition)规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
-该规范下的轮子：seajs（备注：不完全遵循该规范）
+### 轮子：seajs
+
+> 备注：不完全遵循该规范
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo.png)
 
@@ -144,11 +148,12 @@ define(function(require, exports, module) {
 
 缺点：
 
-## 6.UMD(Universal Module Definition) - 通用模块定义
+## 6.UMD
 
-> 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
+> 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
 
-轮子：[SystemJS](https://github.com/systemjs/systemjs)
+### 轮子：[SystemJS](https://github.com/systemjs/systemjs)
+
 > SystemJS是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
 
 systemjs在angular2中的应用：
