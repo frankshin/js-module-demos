@@ -39,6 +39,8 @@ var app = {};
 
 ### 轮子：RequireJS
 
+### 总结：革新派
+
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
 
 轮子原理&demo：
@@ -69,6 +71,8 @@ var app = {};
 4. 模块的factory函数传入三个参数：require,exports,module，用来引入其他依赖和导出本模块API
 5. 如果factory函数最后明确写有return数据（js函数中不写return默认返回undefined），那么return的内容即为模块的输出。
 使用该规范的例子看起来像这样：
+
+### 总结：中间派
 
 ```javascript {cmd="node"}
 // 可以使用exprots来对外暴漏API
