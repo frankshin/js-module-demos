@@ -58,7 +58,7 @@ var app = {};
 
 缺点：
 
-## 3.commonjs-Wrappings
+## 4.commonjs-Wrappings
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/2.0派，改规范的支持者类似“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（http://wiki.commonjs.org/wiki/Modules/Wrappings）规范，此规范指出了一个模块应该如何“包装”，包含以下内容：
 1. 全局有一个module变量，用来定义模块
@@ -87,7 +87,7 @@ module.declare(function(require){
 
 缺点：
 
-## 4.CMD（Common Module Definition）
+## 5.CMD（Common Module Definition）
 
 > 概况：CMD规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
@@ -144,15 +144,16 @@ define(function(require, exports, module) {
 
 缺点：
 
-## 5.UMD(Universal Module Definition) - 通用模块定义
+## 6.UMD(Universal Module Definition) - 通用模块定义
 
 > 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
 
-demo：
+轮子：[SystemJS](https://github.com/systemjs/systemjs)
+> SystemJS是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
 
 systemjs在angular2中的应用：
 
-## 6.ES6
+## 7.ES6
 
 > 概况：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块
 
@@ -191,10 +192,6 @@ $ compile-modules convert bundle.js main.js
 // -o参数可以指定转码后的文件名(包括指定路径)
 $ compile-modules convert -o dist/bundle.js main.js
 ```
-
-### SystemJS
-
-> SystemJS是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
 
 ### Rollup (2015年5月)
 
