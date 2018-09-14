@@ -202,11 +202,11 @@ $ compile-modules convert bundle.js main.js
 $ compile-modules convert -o dist/bundle.js main.js
 ```
 
-### Rollup (2015年5月)
+### Rollup
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png)
 
-> 概况：[Rollup](http://www.rollupjs.com/)是另一个JavaScript ES6模块打包器。与Browserify和Webpak不同，rollup只包含在项目中用到的代码。如果有大模块，带有很多函数，但是你只是用到少数几个，rollup只会将需要的函数包含到打包文件中，从而显著减少打包文件大小。
+> 概况：[Rollup](http://www.rollupjs.com/)是另一个JavaScript ES6模块打包器。发布于2015年5月，与Browserify和Webpak不同，rollup只包含在项目中用到的代码。如果有大模块，带有很多函数，但是你只是用到少数几个，rollup只会将需要的函数包含到打包文件中，从而显著减少打包文件大小。
 
 rollup在angular2中的应用：
 
