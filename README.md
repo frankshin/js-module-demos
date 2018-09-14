@@ -243,15 +243,15 @@ $ rollup main.js --file bundle.js --format umd --name "myBundle"
 
 ```
 
-# 其他规范及轮子
-
-## Webpack
+### webpack
 
 > 概况：Webpack 可以处理 CommonJS 、 AMD 和 ES6 模块
 
 该规范下的轮子：
 
 轮子原理&demo：
+
+# 其他规范及轮子
 
 ## JSPM
 
