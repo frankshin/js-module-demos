@@ -46,7 +46,7 @@ var app = {};
 轮子原理&demo：
 这里名叫requirejs的工具，并没有支持commonjs规范中的require语法
 
-## 3.commonjs-Transport
+## 4.commonjs-Transport
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/1.x派，该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
@@ -56,13 +56,13 @@ var app = {};
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png)
 
-轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
+轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
 优点：
 
 缺点：
 
-## 4.commonjs-Wrappings
+## 5.commonjs-Wrappings
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/2.0派，改规范的支持者类似“中间派”，既不想丢掉旧的规范，也不想像AMD那样推到重来。他们认为，Modules/1.0固然不适合浏览器，但它里面的一些理念还是很好的，（如通过require来声明依赖），新的规范应该兼容这些，AMD规范也有它好的地方（例如模块的预先加载以及通过return可以暴漏任意类型的数据，而不是像commonjs那样exports只能为object），也应采纳。最终他们制定了一个Modules/Wrappings（http://wiki.commonjs.org/wiki/Modules/Wrappings）规范，此规范指出了一个模块应该如何“包装”，包含以下内容：
 1. 全局有一个module变量，用来定义模块
@@ -93,9 +93,9 @@ module.declare(function(require){
 
 缺点：
 
-## 5.CMD
+## 6.CMD
 
-> 概况：CMD(Common Module Definition)规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
+> 概况:CMD(Common Module Definition)规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
 ### 轮子：seajs
 
@@ -152,7 +152,7 @@ define(function(require, exports, module) {
 
 缺点：
 
-## 6.UMD
+## 7.UMD
 
 > 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
 
@@ -162,7 +162,7 @@ define(function(require, exports, module) {
 
 systemjs在angular2中的应用：
 
-## 7.ES6
+## 8.ES6
 
 > 概况：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块
 
