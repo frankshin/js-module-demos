@@ -261,7 +261,7 @@ $ rollup main.js --file bundle.js --format umd --name "myBundle"
 
 demo：
 
-```javascript {cmd="node"}
+```js
 // 安装到全局
 npm install jspm -g
 
