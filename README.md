@@ -82,7 +82,7 @@ var app = {};
 
 ### 总结：保皇派
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_300)
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_260)
 
 轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
@@ -194,7 +194,7 @@ systemjs在angular2中的应用：
 
 > 概况：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png?x-oss-process=image/resize,l_300)
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png?x-oss-process=image/resize,l_260)
 
 优点：
 
@@ -232,7 +232,7 @@ $ compile-modules convert -o dist/bundle.js main.js
 
 ### Rollup
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png)
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png?x-oss-process=image/resize,l_260)
 
 > 概况：[Rollup](http://www.rollupjs.com/)是另一个JavaScript ES6模块打包器。发布于2015年5月，与Browserify和Webpak不同，rollup只包含在项目中用到的代码。如果有大模块，带有很多函数，但是你只是用到少数几个，rollup只会将需要的函数包含到打包文件中，从而显著减少打包文件大小。
 
@@ -283,7 +283,7 @@ $ rollup main.js --file bundle.js --format umd --name "myBundle"
 
 ## JSPM
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/jspm.png)
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/jspm.png?x-oss-process=image/resize,l_260)
 
 > 概况： [JSPM](https://jspm.org/docs/0.16/getting-started.html)是 JavaScript 开发工具的瑞士军刀，它是既是包管理器，又是模块加载器，又是模块打包器。
 
