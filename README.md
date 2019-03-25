@@ -82,7 +82,7 @@ var app = {};
 
 ### 总结：保皇派
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png)
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_300)
 
 轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
@@ -194,7 +194,7 @@ systemjs在angular2中的应用：
 
 > 概况：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png)
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png?x-oss-process=image/resize,l_300)
 
 优点：
 
