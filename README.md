@@ -190,25 +190,21 @@ systemjs在angular2中的应用：
 优点：
 
 * es6的加载方式称为“编译时加载”或者静态加载，即ES6可以在编译时就完成模块加载，效率要比CommonJS模块的加载方式高(eg: import命令是编译阶段执行的，在代码运行之前)
-
 * 静态加载的方式能够通过静态分析，进一步拓宽JavaScript的语法，比如引入宏（macro）和类型检验（type system）这些只能靠静态分析实现的功能。
-
 * 不再需要UMD模块格式了，将来服务器和浏览器都会支持 ES6 模块格式。目前，通过各种工具库，其实已经做到了这一点。
-
 * 将来浏览器的新API就能用模块格式提供，不再必须做成全局变量或者navigator对象的属性。
-
 * 不再需要对象作为命名空间（比如Math对象），未来这些功能可以通过模块提供。
 
 缺点：
-es6的静态加载导致没法引用ES6模块本身，因为它不是对象。
+
+* es6的静态加载导致没法引用ES6模块本身，因为它不是对象。
 
 es6模块与commonjs模块比较：
 
 * CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
-
 * CommonJS模块是运行时加载，ES6模块是编译时输出接口。(因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。)
 
-### es6-module-transpiler
+### 轮子：es6-module-transpiler
 
 > ES6 module transpiler是square公司开源的一个转码器，可以将ES6模块转为CommonJS模块或AMD模块的写法，从而在浏览器中使用.
 
@@ -221,7 +217,7 @@ $ compile-modules convert bundle.js main.js
 $ compile-modules convert -o dist/bundle.js main.js
 ```
 
-### Rollup
+### 轮子：Rollup
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png?x-oss-process=image/resize,l_260)
 
@@ -262,7 +258,7 @@ $ rollup main.js --file bundle.js --format umd --name "myBundle"
 
 ```
 
-### webpack
+### 轮子：webpack
 
 > 概况：Webpack 可以处理 CommonJS 、 AMD 和 ES6 模块
 
