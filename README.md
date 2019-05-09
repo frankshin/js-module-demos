@@ -17,6 +17,10 @@
 - [UMD](#UMD)
   - [轮子：SystemJS](#轮子：SystemJS)
 - [ES6](#ES6)
+  - [export命令](#export命令)
+  - [import命令](#import命令)
+  - [export_default命令](#export_default命令)
+  - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
   - [es6-module-transpiler](#es6-module-transpiler)
   - [Rollup](#Rollup)
   - [webpack](#webpack)
@@ -204,7 +208,7 @@ es6模块与commonjs模块比较：
 * CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
 * CommonJS模块是运行时加载，ES6模块是编译时输出接口。(因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。)
 
-> export命令
+### export命令
 
 ```js
 // profile.js
@@ -218,7 +222,7 @@ var year = 1958;
 export {firstName, lastName, year};
 ```
 
-> import命令
+### import命令
 
 ```js
 // 引入
@@ -226,7 +230,7 @@ import {firstName, lastName, year} from './profile.js';
 import { lastName as surname } from './profile.js'
 ```
 
-> export default命令
+### export_default命令
 
 export default为模块指定默认输出，用户不需要知道所要加载的变量名/函数名
 ```js
@@ -237,6 +241,43 @@ export default function () {
 import xxxName from './export-default';
 ```
 ps：export default命令用于指定模块的默认输出。显然，一个模块只能有一个默认输出，因此export default命令只能使用一次
+
+### es6模块加载commonjs模块
+
+Node 的import命令加载 CommonJS 模块，Node 会自动将module.exports属性，当作模块的默认输出，即等同于export default xxx，如下：
+
+```js
+// CommonJS 模块 a.js
+module.exports = {
+  foo: 'hello',
+  bar: 'world'
+}
+// 等同于
+export default {
+  foo: 'hello',
+  bar: 'world'
+}
+```
+import命令加载上面的commonjs（a.js）模块，module.exports会被视为默认输出，即import命令实际上输入的是这样一个对象{ default: module.exports }
+
+所以，一共有三种写法，可以拿到 CommonJS 模块的module.exports：
+```js
+// 写法一
+import baz from './a';
+// baz = {foo: 'hello', bar: 'world'};
+
+// 写法二
+import {default as baz} from './a';
+// baz = {foo: 'hello', bar: 'world'};
+
+// 写法三
+import * as baz from './a';
+// baz = {
+//   get default() {return module.exports;},
+//   get foo() {return this.default.foo}.bind(baz),
+//   get bar() {return this.default.bar}.bind(baz)
+// }
+```
 
 ### 轮子：es6-module-transpiler
 
