@@ -9,12 +9,9 @@
 - [模块对象和IIFE](#模块对象和IIFE)
 - [commonjs-AMD](#commonjs-AMD)
   - [轮子：RequireJS](#轮子：RequireJS)
-  - [总结：革新派](#总结：革新派)
 - [commonjs-Transport](#commonjs-Transport)
   - [轮子：Browserify](#轮子：Browserify)
-  - [总结：保皇派](#总结：保皇派)
 - [commonjs-Wrappings](#commonjs-Wrappings)
-  - [总结：中间派](#总结：中间派)
 - [CMD](#CMD)
   - [轮子：seajs](#轮子：seajs)
 - [UMD](#UMD)
@@ -67,8 +64,6 @@ var app = {};
 
 ### 轮子：RequireJS
 
-### 总结：革新派
-
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
 
 轮子原理&demo：
@@ -79,8 +74,6 @@ var app = {};
 > 概况：该规范即从commonjs中分离出来的派系：Modules/1.x派，该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
 
 ### 轮子：Browserify
-
-### 总结：保皇派
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_260)
 
@@ -99,8 +92,6 @@ var app = {};
 4. 模块的factory函数传入三个参数：require,exports,module，用来引入其他依赖和导出本模块API
 5. 如果factory函数最后明确写有return数据（js函数中不写return默认返回undefined），那么return的内容即为模块的输出。
 使用该规范的例子看起来像这样：
-
-### 总结：中间派
 
 ```javascript {cmd="node"}
 // 可以使用exprots来对外暴漏API
