@@ -7,10 +7,10 @@
 
 - [script](#script)
 - [模块对象和IIFE](#模块对象和IIFE)
-- [AMD](#AMD)
-  - [轮子：RequireJS](#轮子：RequireJS)
 - [commonjs](#commonjs)
   - [轮子：Browserify](#轮子：Browserify)
+- [AMD](#AMD)
+  - [轮子：RequireJS](#轮子：RequireJS)
 - [CMD](#CMD)
   - [轮子：seajs](#轮子：seajs)
 - [UMD](#UMD)
@@ -61,17 +61,6 @@ var app = {};
 })(app);
 ```
 
-## AMD
-
-> 概况：该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
-
-### 轮子：RequireJS
-
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
-
-轮子原理&demo：
-这里名叫requirejs的工具，并没有支持commonjs规范中的require语法
-
 ## commonjs
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/1.x派，该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
@@ -85,6 +74,17 @@ var app = {};
 优点：
 
 缺点：
+
+## AMD
+
+> 概况：该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
+
+### 轮子：RequireJS
+
+![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
+
+轮子原理&demo：
+这里名叫requirejs的工具，并没有支持commonjs规范中的require语法
 
 ## CMD
 
