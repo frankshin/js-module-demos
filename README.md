@@ -63,7 +63,15 @@ var app = {};
 
 ## commonjs
 
-> 概况：该规范即从commonjs中分离出来的派系：Modules/1.x派，该规范是基于现有规范稍作变通，只是在此基础上使用工具将模块转换成浏览器能够跑起来的代码模块
+> what
+> why:
+js没有模块系统，为了让js在浏览器以外运行，以达到Java、C#、PHP这些后台语言具备开发大型应用的能力
+> how
+在CommonJs规范中：
+一个文件就是一个模块，拥有单独的作用域；
+普通方式定义的变量、函数、对象都属于该模块内；
+通过require来加载模块；
+通过exports和modul.exports来暴露模块中的内容；
 
 ### 轮子：Browserify
 
@@ -71,13 +79,14 @@ var app = {};
 
 轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
-优点：
-
-缺点：
-
 ## AMD
 
 > 概况：该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
+
+AMD demo:
+```js
+define(['dep1','dep2'],function(dep1,dep2){...})
+```
 
 ### 轮子：RequireJS
 
