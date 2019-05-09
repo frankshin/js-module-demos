@@ -204,6 +204,40 @@ es6模块与commonjs模块比较：
 * CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
 * CommonJS模块是运行时加载，ES6模块是编译时输出接口。(因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。)
 
+- export命令
+
+```js
+// profile.js
+export var firstName = 'Michael';
+export var lastName = 'Jackson';
+export var year = 1958;
+// 或
+var firstName = 'Michael';
+var lastName = 'Jackson';
+var year = 1958;
+export {firstName, lastName, year};
+```
+
+- import命令
+
+```js
+// 引入
+import {firstName, lastName, year} from './profile.js';
+import { lastName as surname } from './profile.js'
+```
+
+- export default命令
+
+export default为模块指定默认输出，用户不需要知道所要加载的变量名/函数名
+```js
+// xxxName为任意名称，同时import命令后面，不使用大括号
+export default function () {
+  console.log('foo');
+}
+import xxxName from './export-default';
+```
+ps：export default命令用于指定模块的默认输出。显然，一个模块只能有一个默认输出，因此export default命令只能使用一次
+
 ### 轮子：es6-module-transpiler
 
 > ES6 module transpiler是square公司开源的一个转码器，可以将ES6模块转为CommonJS模块或AMD模块的写法，从而在浏览器中使用.
