@@ -21,9 +21,9 @@
   - [import命令](#import命令)
   - [export_default命令](#export_default命令)
   - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
-  - [es6-module-transpiler](#es6-module-transpiler)
-  - [Rollup](#Rollup)
-  - [webpack](#webpack)
+  - [轮子:es6-module-transpiler](#es6-module-transpiler)
+  - [轮子:Rollup](#Rollup)
+  - [轮子:webpack](#webpack)
 - [其他规范及轮子](#其他规范及轮子)
   - [JSPM](#JSPM)
 - [结束语](#结束语)
@@ -279,7 +279,7 @@ import * as baz from './a';
 // }
 ```
 
-### 轮子：es6-module-transpiler
+### 轮子:es6-module-transpiler
 
 > ES6 module transpiler是square公司开源的一个转码器，可以将ES6模块转为CommonJS模块或AMD模块的写法，从而在浏览器中使用.
 
@@ -292,7 +292,7 @@ $ compile-modules convert bundle.js main.js
 $ compile-modules convert -o dist/bundle.js main.js
 ```
 
-### 轮子：Rollup
+### 轮子:Rollup
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png?x-oss-process=image/resize,l_260)
 
@@ -333,7 +333,7 @@ $ rollup main.js --file bundle.js --format umd --name "myBundle"
 
 ```
 
-### 轮子：webpack
+### 轮子:webpack
 
 > 概况：Webpack 可以处理 CommonJS 、 AMD 和 ES6 模块
 
