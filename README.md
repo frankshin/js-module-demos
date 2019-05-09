@@ -63,9 +63,11 @@ var app = {};
 
 ## commonjs
 
-> what
+> what:
+
 > why:
 js没有模块系统，为了让js在浏览器以外运行，以达到Java、C#、PHP这些后台语言具备开发大型应用的能力
+
 > how
 在CommonJs规范中：
 一个文件就是一个模块，拥有单独的作用域；
