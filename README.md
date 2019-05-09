@@ -131,44 +131,44 @@ module.declare(function(require){
 ```javascript {cmd="node"}
 //a.js
 define(function(require, exports, module){
-    console.log('a.js执行');
-    return {
-        hello: function(){
-            console.log('hello, a.js');
-        }
+  console.log('a.js执行');
+  return {
+    hello: function(){
+      console.log('hello, a.js');
     }
-});
+  }
+})
 //b.js
 define(function(require, exports, module){
-    console.log('b.js执行');
-    return {
-        hello: function(){
-            console.log('hello, b.js');
-        }
+  console.log('b.js执行');
+  return {
+    hello: function(){
+        console.log('hello, b.js');
     }
-});
+  }
+})
 //main.js
 define(function(require, exports, module){
-    console.log('main.js执行');
-    var a = require('a');
-    a.hello();
-    $('#b').click(function(){
-        var b = require('b');
-        b.hello();
-    });
-});
+  console.log('main.js执行');
+  var a = require('a');
+  a.hello();
+  $('#b').click(function(){
+    var b = require('b');
+    b.hello();
+  })
+})
 
 // 使用说明：
 // 所有模块都通过 define 来定义
 define(function(require, exports, module) {
-    // 通过 require 引入依赖
-    var $ = require('jquery');
-    var Spinning = require('./spinning');
-    // 通过 exports 对外提供接口
-    exports.doSomething = ...
-    // 或者通过 module.exports 提供整个接口
-    module.exports = ...
-});
+  // 通过 require 引入依赖
+  var $ = require('jquery');
+  var Spinning = require('./spinning');
+  // 通过 exports 对外提供接口
+  exports.doSomething = ...
+  // 或者通过 module.exports 提供整个接口
+  module.exports = ...
+})
 ```
 
 优点：
