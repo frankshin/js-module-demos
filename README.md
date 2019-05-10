@@ -20,7 +20,7 @@
   - [import命令](#import命令)
   - [export_default命令](#export_default命令)
   - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
-  - [require()加载es6模块](#require()加载es6模块)
+  - [require/import加载es6模块](#require/import加载es6模块)
   - [轮子:es6-module-transpiler](#es6-module-transpiler)
   - [轮子:Rollup](#Rollup)
   - [轮子:webpack](#webpack)
