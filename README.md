@@ -20,6 +20,7 @@
   - [import命令](#import命令)
   - [export_default命令](#export_default命令)
   - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
+  - [require()加载es6模块](#require()加载es6模块)
   - [轮子:es6-module-transpiler](#es6-module-transpiler)
   - [轮子:Rollup](#Rollup)
   - [轮子:webpack](#webpack)
@@ -258,6 +259,42 @@ import * as baz from './a';
 //   get foo() {return this.default.foo}.bind(baz),
 //   get bar() {return this.default.bar}.bind(baz)
 // }
+```
+
+### require/import加载es6模块
+
+有如下的模块文件a.js
+
+```js
+export default function(){}
+```
+
+在babel5中，编译结果如下：
+```js
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = function () {};
+module.exports = exports["default"];
+
+// import获取模块
+import something from './app';
+// or:
+import { default as something } from './app';
+```
+
+在babel6+中，编译结果如下：
+```js
+'use strict';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = function () {};
+```
+如上所示，babel6中不再给module.exports赋值，现在获取模块如下：
+```js
+require('./app').default
 ```
 
 ### 轮子:es6-module-transpiler
