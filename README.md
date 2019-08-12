@@ -8,13 +8,13 @@
 - [script](#script)
 - [模块对象和IIFE](#模块对象和IIFE)
 - [commonjs](#commonjs)
-  - [轮子：Browserify](#轮子：Browserify)
+  - [轮子之Browserify](#轮子之Browserify)
 - [AMD](#AMD)
-  - [轮子：RequireJS](#轮子：RequireJS)
+  - [轮子之RequireJS](#轮子之RequireJS)
 - [CMD](#CMD)
-  - [轮子：seajs](#轮子：seajs)
+  - [轮子之seajs](#轮子之seajs)
 - [UMD](#UMD)
-  - [轮子：SystemJS](#轮子：SystemJS)
+  - [轮子之SystemJS](#轮子之SystemJS)
 - [ES6](#ES6)
   - [export命令](#export命令)
   - [import命令](#import命令)
@@ -22,8 +22,8 @@
   - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
   - [require/import加载es6模块](#require/import加载es6模块)
   - [轮子:es6-module-transpiler](#es6-module-transpiler)
-  - [轮子:Rollup](#Rollup)
-  - [轮子:webpack](#webpack)
+  - [轮子:Rollup](#轮子:Rollup)
+  - [轮子:webpack](#轮子:webpack)
 - [其他规范及轮子](#其他规范及轮子)
   - [JSPM](#JSPM)
 - [结束语](#结束语)
@@ -76,7 +76,7 @@ js没有模块系统，为了让js在浏览器以外运行，以达到Java、C#�
 通过require来加载模块；
 通过exports和modul.exports来暴露模块中的内容；
 
-### 轮子：Browserify
+### 轮子之Browserify
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_260)
 
@@ -91,7 +91,7 @@ AMD demo:
 define(['dep1','dep2'],function(dep1,dep2){...})
 ```
 
-### 轮子：RequireJS
+### 轮子之RequireJS
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
 
@@ -102,7 +102,7 @@ define(['dep1','dep2'],function(dep1,dep2){...})
 
 > 概况:CMD(Common Module Definition)规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
 
-### 轮子：seajs
+### 轮子之seajs
 
 > 备注：不完全遵循该规范
 
@@ -140,7 +140,7 @@ define(function(require, exports, module){
   })
 })
 
-// 使用说明：
+// 使用说明：
 // 所有模块都通过 define 来定义
 define(function(require, exports, module) {
   // 通过 require 引入依赖
@@ -161,7 +161,7 @@ define(function(require, exports, module) {
 
 > 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
 
-### 轮子：SystemJS
+### 轮子之SystemJS
 
 > [SystemJS](https://github.com/systemjs/systemjs)是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
 
@@ -212,7 +212,7 @@ import {firstName, lastName, year} from './profile.js';
 import { lastName as surname } from './profile.js'
 ```
 
-### export default命令
+### export_default命令
 
 export default为模块指定默认输出，用户不需要知道所要加载的变量名/函数名
 ```js
