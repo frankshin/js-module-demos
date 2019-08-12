@@ -20,7 +20,7 @@
   - [import命令](#import命令)
   - [export_default命令](#export_default命令)
   - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
-  - [require/import加载es6模块](#require/import加载es6模块)
+  - [require&import加载es6模块](#require&import加载es6模块)
   - [轮子:es6-module-transpiler](#es6-module-transpiler)
   - [轮子:Rollup](#轮子:Rollup)
   - [轮子:webpack](#轮子:webpack)
@@ -261,7 +261,7 @@ import * as baz from './a';
 // }
 ```
 
-### require/import加载es6模块
+### require&import加载es6模块
 
 有如下的模块文件a.js
 
