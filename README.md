@@ -64,7 +64,14 @@ var app = {};
 
 ## commonjs
 
-> what:
+> what: 这里以redux-thunk的引用为例
+
+```js
+// 1.0x
+- var ReduxThunk = require('redux-thunk')
+// If you use Redux Thunk 2.x in CommonJS environment, don’t forget to add .default to your import
++ var ReduxThunk = require('redux-thunk').default
+```
 
 > why:
 js没有模块系统，为了让js在浏览器以外运行，以达到Java、C#、PHP这些后台语言具备开发大型应用的能力
@@ -159,7 +166,16 @@ define(function(require, exports, module) {
 
 ## UMD
 
-> 概况：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格，UMD规范本质上是一套识别当前环境支持的if/else语句
+what：UMD规范本质上是一套识别当前环境支持的if/else语句
+
+```js
+// 这里以redux-thunk为例看下引用语法
+var ReduxThunk = window.ReduxThunk.default
+```
+
+why：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格
+
+how：
 
 ### 轮子之SystemJS
 
@@ -169,21 +185,29 @@ systemjs在angular2中的应用：
 
 ## ES6
 
-> 概况：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块
-
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png?x-oss-process=image/resize,l_260)
 
-优点：
+what：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块，这里以redux-thunk为例看下使用语法：
 
-* es6的加载方式称为“编译时加载”或者静态加载，即ES6可以在编译时就完成模块加载，效率要比CommonJS模块的加载方式高(eg: import命令是编译阶段执行的，在代码运行之前)
-* 静态加载的方式能够通过静态分析，进一步拓宽JavaScript的语法，比如引入宏（macro）和类型检验（type system）这些只能靠静态分析实现的功能。
-* 不再需要UMD模块格式了，将来服务器和浏览器都会支持 ES6 模块格式。目前，通过各种工具库，其实已经做到了这一点。
-* 将来浏览器的新API就能用模块格式提供，不再必须做成全局变量或者navigator对象的属性。
-* 不再需要对象作为命名空间（比如Math对象），未来这些功能可以通过模块提供。
+```js
+import ReduxThunk from 'redux-thunk'
+```
 
-缺点：
+why：
+```
+es6的加载方式称为“编译时加载”或者静态加载，即ES6可以在编译时就完成模块加载，效率要比CommonJS模块的加载方式高(eg: import命令是编译阶段执行的，在代码运行之前)
 
-* es6的静态加载导致没法引用ES6模块本身，因为它不是对象。
+静态加载的方式能够通过静态分析，进一步拓宽JavaScript的语法，比如引入宏（macro）和类型检验（type system）这些只能靠静态分析实现的功能。
+
+不再需要UMD模块格式了，将来服务器和浏览器都会支持 ES6 模块格式。目前，通过各种工具库，其实已经做到了这一点。
+
+将来浏览器的新API就能用模块格式提供，不再必须做成全局变量或者navigator对象的属性。
+
+不再需要对象作为命名空间（比如Math对象），未来这些功能可以通过模块提供。
+```
+
+how(缺点及解决方案)：
+es6的静态加载导致没法引用ES6模块本身，因为它不是对象。
 
 es6模块与commonjs模块比较：
 
