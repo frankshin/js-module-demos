@@ -20,10 +20,10 @@
   - [import命令](#import命令)
   - [export_default命令](#export_default命令)
   - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
-  - [require&import加载es6模块](#require&import加载es6模块)
-  - [轮子:es6-module-transpiler](#es6-module-transpiler)
-  - [轮子:Rollup](#轮子:Rollup)
-  - [轮子:webpack](#轮子:webpack)
+  - [require_import加载es6模块](#require_import加载es6模块)
+  - [轮子之es6-module-transpiler](#轮子之es6-module-transpiler)
+  - [轮子之Rollup](#轮子之Rollup)
+  - [轮子之webpack](#轮子之webpack)
 - [其他规范及轮子](#其他规范及轮子)
   - [JSPM](#JSPM)
 - [结束语](#结束语)
@@ -261,7 +261,7 @@ import * as baz from './a';
 // }
 ```
 
-### require&import加载es6模块
+### require_import加载es6模块
 
 有如下的模块文件a.js
 
@@ -297,7 +297,7 @@ exports.default = function () {};
 require('./app').default
 ```
 
-### 轮子:es6-module-transpiler
+### 轮子之es6-module-transpiler
 
 > ES6 module transpiler是square公司开源的一个转码器，可以将ES6模块转为CommonJS模块或AMD模块的写法，从而在浏览器中使用.
 
@@ -310,7 +310,7 @@ $ compile-modules convert bundle.js main.js
 $ compile-modules convert -o dist/bundle.js main.js
 ```
 
-### 轮子:Rollup
+### 轮子之Rollup
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/rollup.png?x-oss-process=image/resize,l_260)
 
