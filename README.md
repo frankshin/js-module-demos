@@ -64,7 +64,9 @@ var app = {};
 
 ## commonjs
 
-what: 这里以redux-thunk的引用为例
+what: 
+
+这里以redux-thunk的引用为例
 
 ```js
 // 1.0x
@@ -74,9 +76,11 @@ what: 这里以redux-thunk的引用为例
 ```
 
 why:
+
 js没有模块系统，为了让js在浏览器以外运行，以达到Java、C#、PHP这些后台语言具备开发大型应用的能力
 
-how
+how:
+
 在CommonJs规范中：
 一个文件就是一个模块，拥有单独的作用域；
 普通方式定义的变量、函数、对象都属于该模块内；
