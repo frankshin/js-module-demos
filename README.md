@@ -8,14 +8,40 @@
 - [script](#script)
 - [模块对象和IIFE](#模块对象和IIFE)
 - [commonjs](#commonjs)
-  - [轮子之Browserify](#轮子之Browserify)
+  - [what](#what)
+  - [why](#why)
+  - [环境](#运行环境)
+  - [应用](#应用)
+  - [语法](#语法)
+  - [轮子之](#轮子)
 - [AMD](#AMD)
-  - [轮子之RequireJS](#轮子之RequireJS)
+  - [what](#what)
+  - [why](#why)
+  - [环境](#运行环境)
+  - [应用](#应用)
+  - [语法](#语法)
+  - [轮子之](#轮子)
 - [CMD](#CMD)
-  - [轮子之seajs](#轮子之seajs)
+  - [what](#what)
+  - [why](#why)
+  - [环境](#运行环境)
+  - [应用](#应用)
+  - [语法](#语法)
+  - [轮子之](#轮子)
 - [UMD](#UMD)
-  - [轮子之SystemJS](#轮子之SystemJS)
+  - [what](#what)
+  - [why](#why)
+  - [运行环境](#运行环境)
+  - [应用](#应用)
+  - [语法](#语法)
+  - [轮子之](#轮子)
 - [ES6](#ES6)
+  - [what](#what)
+  - [why](#why)
+  - [环境](#运行环境)
+  - [应用](#应用)
+  - [语法](#语法)
+  - [es6模块与commonjs模块比较](#es6模块与commonjs模块比较)
   - [export命令](#export命令)
   - [import命令](#import命令)
   - [export和default命令](#export和default命令)
@@ -26,9 +52,7 @@
   - [轮子之webpack](#轮子之webpack)
 - [其他规范及轮子](#其他规范及轮子)
   - [JSPM](#JSPM)
-- [结束语](#结束语)
-  - [备注](#备注)
-  - [参考文章&感谢](#参考文章&感谢)
+- [参考文章&感谢](#参考文章&感谢)
 
 ## script
 
@@ -64,160 +88,203 @@ var app = {};
 
 ## commonjs
 
-what: 
+### what
 
-这里以redux-thunk的引用为例
-
-```js
-// 1.0x
-- var ReduxThunk = require('redux-thunk')
-// If you use Redux Thunk 2.x in CommonJS environment, don’t forget to add .default to your import
-+ var ReduxThunk = require('redux-thunk').default
+```
+1、模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存
+2、模块加载会阻塞接下来代码的执行，需要等到模块加载完成才能继续执行——同步加载
+3、在CommonJs规范中，一个文件就是一个模块，拥有单独的作用域，普通方式定义的变量、函数、对象都属于该模块内；
+4、通过require来加载模块，通过exports和modul.exports来暴露模块中的内容（见如下demo）
 ```
 
-why:
+### why
 
+```
 js没有模块系统，为了让js在浏览器以外运行，以达到Java、C#、PHP这些后台语言具备开发大型应用的能力
+```
 
-how:
+### 环境
 
-在CommonJs规范中：
-一个文件就是一个模块，拥有单独的作用域；
-普通方式定义的变量、函数、对象都属于该模块内；
-通过require来加载模块；
-通过exports和modul.exports来暴露模块中的内容；
+服务器环境
 
-### 轮子之Browserify
+### 应用
 
-![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_260)
+commonjs的实现应用于nodejs的模块规范
 
-轮子原理&demo：轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
+### 语法
+
+```js
+// a.js
+// 相当于：module.exports.a = 'Hello world';
+exports.a = 'Hello world';
+// b.js
+var moduleA = require('./a.js');
+console.log(moduleA.a);   // 出hello world
+```
+ps：在 nodejs 中，exports 是 module.exports 的一个引用（相当于Node为每个模块提供一个exports变量，指向module.exports），当你使用了 module.exports = xxxx，实际上覆盖了 module.exports，但是 exports 并未发生改变。
+
+### 轮子
+
+![Browserify](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/browserify.png?x-oss-process=image/resize,l_260)
+
+轮子的原理就是手动去定义浏览器中缺失但在commonjs规范中需要的变量模块（module、exports、require、global）
 
 ## AMD
 
-> 概况：该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
+### what
 
-AMD demo:
-```js
-define(['dep1','dep2'],function(dep1,dep2){...})
+```
+1、异步加载
+2、管理模块之间的依赖性，便于代码的编写和维护
 ```
 
-### 轮子之RequireJS
+### why
+
+该规范即从commonjs中分离出来的派系：Modules/Async派，该规范的支持者认为commonjs的基础规范还是只能服务于服务端，因为浏览器加载模块必须是异步的，不同于服务端，所以在浏览器端，加载当前模块之前，必须定义该模块所需要的依赖模块，然后当前模块必须放在所需依赖模块加载完成的回调里去执行。
+
+### 运行环境
+
+浏览器环境
+
+### 应用
+
+requireJS是参照AMD规范实现的
+
+### 语法
+
+```js
+// a.js
+define(function (){
+　　return {
+　　　a:'hello world'
+　　}
+});
+// b.js
+require(['./a.js'], function (moduleA){
+    console.log(moduleA.a); // hello world
+});
+```
+
+### 轮子
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo%20%281%29.png)
 
-轮子原理&demo：
-这里名叫requirejs的工具，并没有支持commonjs规范中的require语法
-
 ## CMD
 
-> 概况:CMD(Common Module Definition)规范基于兼容并包的思想，即提取各家规范的优点进行封装整合，最终形成一套独立的规范
+### what
 
-### 轮子之seajs
+CMD是在AMD基础上改进的一种规范，和AMD不同在于对依赖模块的执行时机处理不同，CMD是就近依赖，而AMD是前置依赖
 
-> 备注：不完全遵循该规范
+### why
+
+待补充
+
+### 环境
+
+浏览器环境
+
+### 应用
+
+seajs是参照UMD规范实现的，requireJS的最新的几个版本也是部分参照了UMD规范的实现
+
+### 语法
+
+```js
+// a.js
+define(function (require, exports, module){
+　exports.a = 'hello world';
+});
+// b.js
+define(function (require, exports, module){
+  var moduleA = require('./a.js');
+  console.log(moduleA.a); // hello world
+});
+```
+
+### 轮子
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/logo.png)
 
-轮子原理&demo：seajs全面拥抱Modules/Wrappings规范，不用requirejs那样回调的方式来编写模块。而它也不是完全按照Modules/Wrappings规范，seajs并没有使用declare来定义模块，而是使用和requirejs一样的define，或许作者本人更喜欢这个名字吧。（然而这或多或少又会给人们造成理解上的混淆）
-
-```javascript {cmd="node"}
-//a.js
-define(function(require, exports, module){
-  console.log('a.js执行');
-  return {
-    hello: function(){
-      console.log('hello, a.js');
-    }
-  }
-})
-//b.js
-define(function(require, exports, module){
-  console.log('b.js执行');
-  return {
-    hello: function(){
-        console.log('hello, b.js');
-    }
-  }
-})
-//main.js
-define(function(require, exports, module){
-  console.log('main.js执行');
-  var a = require('a');
-  a.hello();
-  $('#b').click(function(){
-    var b = require('b');
-    b.hello();
-  })
-})
-
-// 使用说明：
-// 所有模块都通过 define 来定义
-define(function(require, exports, module) {
-  // 通过 require 引入依赖
-  var $ = require('jquery');
-  var Spinning = require('./spinning');
-  // 通过 exports 对外提供接口
-  exports.doSomething = ...
-  // 或者通过 module.exports 提供整个接口
-  module.exports = ...
-})
-```
-
-优点：
-
-缺点：
+seajs全面拥抱Modules/Wrappings规范，不用requirejs那样回调的方式来编写模块。而它也不是完全按照Modules/Wrappings规范，seajs并没有使用declare来定义模块，而是使用和requirejs一样的define，或许作者本人更喜欢这个名字吧。（然而这或多或少又会给人们造成理解上的混淆）
 
 ## UMD
 
-what：
+### what
 
-UMD规范本质上是一套识别当前环境支持的if/else语句
+UMD规范本质上是一套识别当前环境支持的if/else语句,兼容AMD和commonJS规范的同时，还兼容全局引用的方式
 
-```js
-// 这里以redux-thunk为例看下引用语法
-var ReduxThunk = window.ReduxThunk.default
-```
-
-why：
+### why
 
 如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格
 
-how(如何封装)：
+### 环境
 
-### 轮子之SystemJS
+浏览器或服务器环境
 
-> [SystemJS](https://github.com/systemjs/systemjs)是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
+### 应用
 
-systemjs在angular2中的应用：
+无
+
+### 语法
+
+```js
+// 这里的语法借鉴unserscorejs，并加以改造
+if (typeof exports != 'undefined' && !exports.nodeType) {
+  // Node, CommonJS
+  if (typeof module != 'undefined' && !module.nodeType && module.exports) {
+    exports = module.exports = _;
+  }
+  exports._ = _;
+} else if (typeof define == 'function' && define.amd) {
+  // AMD
+  define('underscore', [], function() {
+    return _;
+  });
+} else {
+  // 暴露全局到window（准确说是当前运行环境）
+  root._ = _;
+}
+```
+
+### 轮子
+
+[SystemJS](https://github.com/systemjs/systemjs)是一个通用的模块加载器(亦称为垫片库-polyfill)，它能在浏览器或者NodeJS上动态加载CommonJS、AMD、全局模块对象和ES6模块，将其转为ES5格式。通过使用插件，它不仅可以加载JavaScript，还可以加载CoffeeScript和TypeScript。它在后台调用的是Google的Traceur转码器。
 
 ## ES6
 
 ![](https://smallpang.oss-cn-shanghai.aliyuncs.com/blog/images/QQ20180728-140143%402x.png?x-oss-process=image/resize,l_260)
 
-what：严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块，这里以redux-thunk为例看下使用语法：
+### what
 
-```js
-import ReduxThunk from 'redux-thunk'
-```
+严格意义上说，commonjs、AMD等模块化规范都是产生于非ECMA官方的技术社区，在2015年6月份发布的ES6版本中，模块已经成为JavaScript语言的一部分，我们可以在项目中使用es6的模块语法，es6用关键字import和export导入和导出模块，这里以redux-thunk为例看下使用语法：
 
-why：
+### why
+
 ```
 es6的加载方式称为“编译时加载”或者静态加载，即ES6可以在编译时就完成模块加载，效率要比CommonJS模块的加载方式高(eg: import命令是编译阶段执行的，在代码运行之前)
-
 静态加载的方式能够通过静态分析，进一步拓宽JavaScript的语法，比如引入宏（macro）和类型检验（type system）这些只能靠静态分析实现的功能。
-
 不再需要UMD模块格式了，将来服务器和浏览器都会支持 ES6 模块格式。目前，通过各种工具库，其实已经做到了这一点。
-
 将来浏览器的新API就能用模块格式提供，不再必须做成全局变量或者navigator对象的属性。
-
 不再需要对象作为命名空间（比如Math对象），未来这些功能可以通过模块提供。
 ```
 
-how(缺点及解决方案)：
-es6的静态加载导致没法引用ES6模块本身，因为它不是对象。
+### 环境
 
-es6模块与commonjs模块比较：
+浏览器或服务器环境（以后可能支持）
+
+### 应用
+
+ES6的最新语法支持规范
+
+### 语法
+
+```
+导入：import {模块名A，模块名B...} from '模块路径'
+导出：export和export default
+import('模块路径').then()方法
+```
+
+### es6模块与commonjs模块比较
 
 * CommonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
 * CommonJS模块是运行时加载，ES6模块是编译时输出接口。(因为CommonJS加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而ES6模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。)
@@ -244,7 +311,7 @@ import {firstName, lastName, year} from './profile.js';
 import { lastName as surname } from './profile.js'
 ```
 
-### export和default命令
+### export的default命令
 
 export default为模块指定默认输出，用户不需要知道所要加载的变量名/函数名
 ```js
@@ -445,16 +512,9 @@ jspm bundle-sfx lib/main
 
 ```
 
-# 结束语
-
-## 备注
-
-> 排序没有严格的先后顺序，只是发展历程的大概呈现
-
 ## 参考文章&感谢
 
-js模块化历程：https://www.cnblogs.com/lvdabao/p/js-modules-develop.html
-
-浏览器加载 CommonJS 模块的原理与实现：http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html
-
-JavaScript 模块简史：http://www.css88.com/archives/7628
+- [js模块化历程](https://www.cnblogs.com/lvdabao/p/js-modules-develop.html)
+- [浏览器加载 CommonJS 模块的原理与实现](http://www.ruanyifeng.com/blog/2015/05/commonjs-in-browser.html)
+- [JavaScript模块简史](http://www.css88.com/archives/7628)
+- [js模块规范](https://segmentfault.com/a/1190000012419990)
