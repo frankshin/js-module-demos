@@ -18,9 +18,9 @@
 - [ES6](#ES6)
   - [export命令](#export命令)
   - [import命令](#import命令)
-  - [export_default命令](#export_default命令)
-  - [es6模块加载commonjs模块](#es6模块加载commonjs模块)
-  - [require_import加载es6模块](#require_import加载es6模块)
+  - [export和default命令](#export和default命令)
+  - [es6规范加载commonjs模块](#es6规范加载commonjs模块)
+  - [require或import加载es6模块](#require或import加载es6模块)
   - [轮子之es6-module-transpiler](#轮子之es6-module-transpiler)
   - [轮子之Rollup](#轮子之Rollup)
   - [轮子之webpack](#轮子之webpack)
@@ -170,16 +170,20 @@ define(function(require, exports, module) {
 
 ## UMD
 
-what：UMD规范本质上是一套识别当前环境支持的if/else语句
+what：
+
+UMD规范本质上是一套识别当前环境支持的if/else语句
 
 ```js
 // 这里以redux-thunk为例看下引用语法
 var ReduxThunk = window.ReduxThunk.default
 ```
 
-why：如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格
+why：
 
-how：
+如果在项目中不得不编写三种风格的模块类型，即模块模式/IIFE、最初的commonjs、从commonjs分离出的AMD，使用UMD(Universal Module Definition 通用模块定义)规范可以识别当前环境支持的模块风格
+
+how(如何封装)：
 
 ### 轮子之SystemJS
 
@@ -240,7 +244,7 @@ import {firstName, lastName, year} from './profile.js';
 import { lastName as surname } from './profile.js'
 ```
 
-### export_default命令
+### export和default命令
 
 export default为模块指定默认输出，用户不需要知道所要加载的变量名/函数名
 ```js
@@ -252,7 +256,7 @@ import xxxName from './export-default';
 ```
 ps：export default命令用于指定模块的默认输出。显然，一个模块只能有一个默认输出，因此export default命令只能使用一次
 
-### es6模块加载commonjs模块
+### es6规范加载commonjs模块
 
 Node 的import命令加载 CommonJS 模块，Node 会自动将module.exports属性，当作模块的默认输出，即等同于export default xxx，如下：
 
@@ -289,7 +293,7 @@ import * as baz from './a';
 // }
 ```
 
-### require_import加载es6模块
+### require或import加载es6模块
 
 有如下的模块文件a.js
 
